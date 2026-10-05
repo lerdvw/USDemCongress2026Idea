@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elect a Veto-Proof Democratic Congress</title>
+  <meta name="description" content="Facts Found. Prices Down. Peace Sound. Register, recruit a recruiter, and vote by {{ election_day_short }} for a veto-proof Democratic Congress.">
+  <meta name="theme-color" content="#0d1f3c">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Facts Found. Prices Down. Peace Sound.">
+  <meta property="og:description" content="Elect a veto-proof Democratic Congress on {{ election_day_long }}. Register, recruit a recruiter, and vote.">
+  <link rel="canonical" href="{{ page_address }}">
+  <meta property="og:url" content="{{ page_address }}">
+  <meta property="og:image" content="{{ share_image_address }}">
+  <meta property="og:image:width" content="{{ share_image_width }}">
+  <meta property="og:image:height" content="{{ share_image_height }}">
+  <meta property="og:image:alt" content="Facts Found. Prices Down. Peace Sound. Elect a veto-proof Democratic Congress on {{ election_day_long }}.">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Tab icon: a ballot box whose red check mark breaks out of it. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1f3c'/%3E%3Cpath d='M44 14H18a5 5 0 0 0-5 5v28a5 5 0 0 0 5 5h28a5 5 0 0 0 5-5V33' fill='none' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M22 31l9 9 22-24' fill='none' stroke='%23ff4d5e' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+{{ stylesheet }}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#three-asks">Skip to the three asks</a>
+
+  <!-- Pinned to the top: the date, and (with the script) a live countdown. -->
+  <div class="election-banner">
+    <p class="page-column">
+      Election Day: <time datetime="{{ election_day_iso }}">{{ election_day_medium }}</time><span data-countdown data-election-day="{{ election_day_iso }}"></span>
+    </p>
+  </div>
+
+  <!-- ======================================================================
+       Hero: the ask and its three promises
+       ====================================================================== -->
+  <header class="hero">
+    <div class="page-column hero-layout">
+      <div class="hero-main">
+        <p class="hero-kicker">The {{ election_year }} midterms</p>
+        <h1>Elect a <em>veto-proof</em> Democratic Congress.</h1>
+        <ul class="slogans" aria-label="What it delivers">
+          <li><a href="#facts-found">Facts <span class="rhyme">Found</span>.</a></li>
+          <li><a href="#prices-down">Prices <span class="rhyme">Down</span>.</a></li>
+          <li><a href="#peace-sound">Peace <span class="rhyme">Sound</span>.</a></li>
+        </ul>
+        <p class="hero-lede">
+          Two-thirds of Congress can pass a law over a president’s veto. Elect that many Democrats,
+          and no veto can block these three promises.
+          <strong>Register, recruit a recruiter, and vote by {{ election_day_short }}.</strong>
+        </p>
+        <div class="button-row">
+          <a class="button" href="https://vote.gov/">Register or check your registration</a>
+          <a class="button button-outline" href="#pass-it-on">Pass it on</a>
+        </div>
+      </div>
+      <!-- On wide screens only, beside the slogans: what veto-proof means. -->
+      <aside class="hero-targets" aria-labelledby="hero-targets-heading">
+        <p class="hero-targets-heading" id="hero-targets-heading">Veto-proof means</p>
+        <p class="seat-target">
+          <span class="seat-target-number">{{ house_seats_for_veto_proof_majority }}</span>
+          <span class="seat-target-label">of the {{ house_seats }} House seats</span>
+        </p>
+        <p class="seat-target">
+          <span class="seat-target-number">{{ senate_seats_for_veto_proof_majority }}</span>
+          <span class="seat-target-label">of the {{ senate_seats }} Senate seats</span>
+        </p>
+        <a class="hero-targets-link" href="#veto-proof">Why two-thirds matters</a>
+      </aside>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ====================================================================
+         The three asks
+         ==================================================================== -->
+    <section class="section" id="three-asks" aria-labelledby="three-asks-heading">
+      <div class="page-column">
+        <h2 id="three-asks-heading">Three asks before {{ election_day_short }}</h2>
+        <p class="section-intro">Each one takes a few minutes. Together they decide who holds Congress for the next two years.</p>
+
+        <ol class="ask-list">
+          <li class="card ask-card">
+            <span class="ask-number" aria-hidden="true">1</span>
+            <h3>Get registered</h3>
+            <p>
+              Not registered yet, or moved or changed your name since you last voted? Act today. Federal law
+              lets states close registration as early as {{ registration_deadline_earliest_days }} days before
+              Election Day,{{ cite: national_voter_registration_act }} though some states let you register when
+              you vote.{{ cite: ncsl_same_day_registration }}
+            </p>
+            <!-- Filled by the script: how close the earliest deadline the 30-day rule allows is. -->
+            <p class="registration-countdown" data-registration-countdown
+               data-election-day="{{ election_day_iso }}"
+               data-earliest-close-days="{{ registration_deadline_earliest_days }}" hidden></p>
+            <div class="button-row">
+              <a class="button" href="https://vote.gov/">Register at vote.gov</a>
+              <a class="button button-outline" href="https://www.nass.org/can-i-vote/voter-registration-status">Check that you’re registered</a>
+            </div>
+          </li>
+
+          <li class="card ask-card">
+            <span class="ask-number" aria-hidden="true">2</span>
+            <h3>Recruit a recruiter</h3>
+            <p>
+              Convince one person to convince others: to get registered, and to vote for a veto-proof
+              Democratic Congress. You know people this page has not reached yet.
+            </p>
+            <div class="button-row">
+              <a class="button" href="#pass-it-on">Get a message to send</a>
+            </div>
+          </li>
+
+          <li class="card ask-card">
+            <span class="ask-number" aria-hidden="true">3</span>
+            <h3>Vote, and bring others</h3>
+            <p>
+              Together with the team you recruited, make a plan and carry it out: vote early or on
+              {{ election_day_long }}, for the Democrats running for the Senate, if your state has a race, and
+              for the House, where every seat is in contention.{{ cite: voting_plan_study }}
+            </p>
+            <div class="button-row">
+              <a class="button" href="#voting-plan">Make my plan</a>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         What it delivers: the three promises
+         ==================================================================== -->
+    <section class="section" id="what-it-delivers" aria-labelledby="what-it-delivers-heading">
+      <div class="page-column">
+        <h2 id="what-it-delivers-heading">What a veto-proof Democratic Congress delivers</h2>
+        <p class="section-intro">
+          With such a Congress, Americans get three things that no veto can block. Every fact below links
+          to its source.
+        </p>
+
+        <div class="result-list">
+
+          <!-- 1 of 3: Facts Found ------------------------------------------ -->
+          <article class="card result-card" id="facts-found" aria-labelledby="facts-found-heading">
+            <div class="result-header">
+              <span class="result-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+              </span>
+              <h3 class="result-slogan" id="facts-found-heading">Facts Found</h3>
+            </div>
+            <p class="result-promise">Answers, under oath, to the questions Americans keep asking.</p>
+            <ul class="result-points">
+              <li>
+                <strong>The Epstein files.</strong>
+                Congress passed a law, {{ epstein_act_house_vote }} in the House, ordering the Justice Department
+                to publish all its unclassified Epstein records, with narrow exceptions, within
+                {{ epstein_act_days_to_publish }} days.{{ cite: house_vote_epstein_act, epstein_act_text }}
+                A federal judge has since ordered the Department to unredact more of them or explain why they
+                must stay blacked out,{{ cite: cbs_epstein_files_ruling }} and its own inspector general is auditing whether it
+                obeyed the law.{{ cite: doj_inspector_general_epstein_audit }}
+              </li>
+              <li>
+                <strong>Why prices went up.</strong>
+                Prices rose {{ prices_percent_rise_all_items }} in the year to August: gasoline
+                {{ prices_percent_rise_gasoline }}, electricity {{ prices_percent_rise_electricity }}.{{ cite: bls_cpi_august_2026 }}
+                Economists at the New York Fed found that American companies and consumers paid
+                {{ us_share_of_2025_tariff_cost }} of the cost of last year’s tariffs.{{ cite: new_york_fed_tariff_burden }}
+              </li>
+              <li>
+                <strong>Why the war didn’t go as expected.</strong>
+                “Well, we intended four to five weeks,” the President said of the Iran war on
+                {{ four_to_five_weeks_remark_day }}.{{ cite: politifact_iran_war_timeline }}
+                {{ months_since_four_to_five_weeks_remark }} months later, the Pentagon counts
+                {{ iran_war_us_killed_or_wounded }} American troops killed or
+                wounded.{{ cite: intercept_iran_war_casualties }}
+              </li>
+              <li>
+                <strong>Why apparent bribery goes unprosecuted.</strong>
+                Money and gifts for the President, and what followed:
+                <ul class="result-subpoints">
+                  <li>
+                    <strong>A jumbo jet.</strong> Qatar’s royal family gave a Boeing 747 worth about
+                    {{ qatar_jet_value }} to fly as Air Force One and then, the administration said, to pass to the
+                    President’s library foundation.{{ cite: abc_qatar_jet }} Months later, he signed an order pledging
+                    to treat any armed attack on Qatar as a threat to the United
+                    States.{{ cite: executive_order_qatar_security }}
+                  </li>
+                  <li>
+                    <strong>Swiss gold.</strong> Swiss executives gave him a gold bar and a gold Rolex desk clock,
+                    accepted for his presidential library; {{ days_from_swiss_gifts_to_tariff_deal }} days later, the
+                    United States announced a deal cutting tariffs on Swiss goods from {{ swiss_tariff_before_deal }}
+                    to {{ swiss_tariff_after_deal }}.{{ cite: msnow_golden_gifts }}
+                  </li>
+                  <li>
+                    <strong>Campaign cash.</strong> Weeks before the 2024 election, Nikola founder Trevor Milton and
+                    his wife gave more than {{ milton_donations_total }} to the Trump 47 Committee, which raised money
+                    for the President’s campaign and his party.{{ cite: fec_milton_trump_47_receipts }} Milton had been
+                    convicted of defrauding investors and sentenced to {{ milton_prison_sentence_years }} years in
+                    prison,{{ cite: doj_milton_sentenced, ap_milton_pardon }} and prosecutors had asked the court to
+                    make him repay about {{ milton_restitution_sought }}.{{ cite: house_judiciary_pardons_inc_report }}
+                    {{ months_from_milton_donations_to_pardon }} months after the donations, the President pardoned
+                    him, erasing the sentence and any repayment.{{ cite: ap_milton_pardon, house_judiciary_pardons_inc_report }}
+                  </li>
+                </ul>
+                Meanwhile the section that prosecutes public corruption went from
+                {{ public_integrity_lawyers_start_2025 }} full-time lawyers to
+                {{ public_integrity_lawyers_september_2025 }} in 2025.{{ cite: notus_public_integrity_section }}
+              </li>
+            </ul>
+            <p class="result-lever">
+              <strong>How Congress delivers it</strong>
+              The majority picks every committee chair, and committees can compel documents and sworn
+              testimony by subpoena.{{ cite: crs_congressional_subpoenas }} This one needs no two-thirds: a
+              simple majority in either chamber is enough.
+            </p>
+          </article>
+
+          <!-- 2 of 3: Prices Down ------------------------------------------ -->
+          <article class="card result-card" id="prices-down" aria-labelledby="prices-down-heading">
+            <div class="result-header">
+              <span class="result-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 4v15"/><path d="m6 13 6 6 6-6"/></svg>
+              </span>
+              <h3 class="result-slogan" id="prices-down-heading">Prices Down</h3>
+            </div>
+            <p class="result-promise">New prosperity: lower prices, good jobs, and a fair deal for working families.</p>
+            <ul class="result-points">
+              <li>
+                <strong>Lower prices.</strong>
+                Tariffs are taxes paid at home: the Tax Foundation puts this year’s at
+                {{ tariff_cost_per_household_2026 }} for the average household.{{ cite: tax_foundation_tariff_tracker }}
+                In February the Supreme Court ruled that the emergency law the President relied on gave him no
+                power to impose tariffs,{{ cite: supreme_court_tariff_ruling }} yet tariffs under other laws
+                still run as high as {{ tariff_rate_steel_aluminum_copper }} on steel, aluminum and copper, and
+                {{ tariff_rate_patented_drugs }} on patented drugs.{{ cite: tax_foundation_tariff_tracker }}
+              </li>
+              <li>
+                <strong>High-wage green jobs.</strong>
+                Since January 2025, companies have cancelled {{ clean_energy_projects_cancelled }} clean-energy
+                projects: {{ clean_energy_investment_cancelled }} of investment and
+                {{ clean_energy_jobs_cancelled }} planned jobs, more of both than all the new projects announced in that
+                time.{{ cite: e2_clean_energy_cancellations }}
+                These are good jobs: wind turbine technicians earn a median {{ wind_turbine_technician_median_pay }}
+                a year, against {{ all_workers_median_pay }} for all workers.{{ cite: bls_wind_technician_pay }}
+              </li>
+              <li>
+                <strong>Working families before billionaires.</strong>
+                The 2025 tax-and-spending law leaves the poorest tenth of households
+                {{ lowest_tenth_yearly_loss }} a year worse off, on average, and the richest tenth
+                {{ highest_tenth_yearly_gain }} a year better off, the Congressional Budget Office
+                estimates.{{ cite: cbo_2025_law_by_income }}
+                With the extra health-insurance tax credits gone, people who buy coverage on the ACA marketplaces pay
+                {{ marketplace_premium_percent_rise }} more for it this year: {{ marketplace_monthly_premium_2026 }}
+                a month on average, up from {{ marketplace_monthly_premium_2025 }}.{{ cite: kff_2026_marketplace_premiums }}
+              </li>
+            </ul>
+            <p class="result-lever">
+              <strong>How Congress delivers it</strong>
+              The Constitution gives the power to tax, tariffs included, to
+              Congress.{{ cite: supreme_court_tariff_ruling }} Two-thirds of each chamber can refocus tariffs on
+              protecting good jobs and lowering prices, rebuild clean-energy investment and rebalance the tax law
+              toward working families, no matter what the President says.
+            </p>
+          </article>
+
+          <!-- 3 of 3: Peace Sound ------------------------------------------ -->
+          <article class="card result-card" id="peace-sound" aria-labelledby="peace-sound-heading">
+            <div class="result-header">
+              <span class="result-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="m12 12-6.4 6.4"/><path d="m12 12 6.4 6.4"/></svg>
+              </span>
+              <h3 class="result-slogan" id="peace-sound-heading">Peace Sound</h3>
+            </div>
+            <p class="result-promise">A sound peace: an end to the war with Iran, and a deal that inspectors can verify.</p>
+            <ul class="result-points">
+              <li>
+                <strong>Diplomacy was cut short.</strong>
+                On {{ ultimatum_day }}, the President gave Iran {{ ultimatum_shortest_days }} to
+                {{ ultimatum_longest_days }} days to make a deal, warning that otherwise “bad things
+                happen”.{{ cite: aljazeera_trump_iran_deadline }}
+                On {{ mediator_breakthrough_day }}, Oman’s foreign minister, who was mediating, said Iran had agreed
+                never to hold material for a bomb, with full access for inspectors, and that technical talks were set
+                for the following Monday. The President said he was not happy with the pace and wanted no enrichment
+                at all.{{ cite: cbs_oman_mediator_deal_within_reach }} The surprise strikes that he had ordered with
+                Israel then began the next day, {{ days_from_ultimatum_to_war }} after he made his ultimatum and
+                <em>{{ days_war_came_before_shortest_deadline }} before</em> even its shortest
+                deadline.{{ cite: crs_conflict_with_iran, washington_post_surprise_attack }}
+              </li>
+              <li>
+                <strong>By the administration’s own account, there was no enrichment program left to stop.</strong>
+                {{ days_from_war_start_to_threat_hearing }} days into the war, the Director of National Intelligence
+                told the Senate in writing that U.S. strikes {{ months_from_midnight_hammer_to_war }} months before it
+                began had left Iran’s nuclear enrichment program “obliterated”, that “there has been no efforts since
+                then to try to rebuild their enrichment capability”, and that the entrances to the bombed sites had
+                been “buried and shuttered with cement”.{{ cite: dni_written_opening_statement_2026, crs_us_strikes_on_iran_nuclear_sites }}
+              </li>
+              <li>
+                <strong>A war Congress never approved.</strong>
+                It began with U.S. and Israeli strikes on {{ iran_war_start_long }}, and Congress has never voted
+                to authorize it.{{ cite: crs_conflict_with_iran, senate_iran_war_powers_votes }}
+                The House has passed {{ house_iran_war_resolutions_passed }} resolutions ordering U.S. forces out
+                of the fighting, and in June the Senate agreed to the first, {{ senate_iran_vote_june_23 }}. The war went on, and in
+                September the Senate rejected another such resolution,
+                {{ senate_iran_vote_september_24 }}.{{ cite: crs_conflict_with_iran, senate_iran_war_powers_votes }}
+              </li>
+              <li>
+                <strong>What it is costing us.</strong>
+                By the Pentagon’s count, {{ iran_war_us_deaths }} U.S. troops have died and
+                {{ iran_war_us_wounded }} more have been wounded.{{ cite: intercept_iran_war_casualties }}
+                The war has cost ${{ iran_war_cost_billions }} billion so
+                far.{{ cite: cnn_iran_war_cost, roll_call_iran_war_cost }}
+                Iran’s attacks on shipping in the Strait of Hormuz drove up oil prices
+                worldwide,{{ cite: crs_conflict_with_iran }} and gasoline costs {{ gas_price_today }} a gallon,
+                against {{ gas_price_year_ago }} a year ago.{{ cite: aaa_gas_prices }}
+              </li>
+              <li>
+                <strong>Diplomacy has worked before.</strong>
+                Under the 2015 nuclear deal, Iran’s enrichment was capped at {{ jcpoa_enrichment_cap }} and its
+                stockpile at {{ jcpoa_stockpile_cap }},{{ cite: arms_control_jcpoa_limits }} and international
+                inspectors found Iran within those limits until after the United States quit the deal in
+                2018.{{ cite: arms_control_iran_timeline }}
+              </li>
+              <li>
+                <strong>What a sound peace looks like.</strong>
+                Inspectors inside Iran’s nuclear and missile programs. Security for Israelis and fair treatment for
+                Palestinians, with each side held to its commitments. Rewards for keeping the peace, and
+                consequences for breaking it.
+              </li>
+            </ul>
+            <p class="result-lever">
+              <strong>How Congress delivers it</strong>
+              A law can order U.S. forces out of the fighting and cut off the money for it. Passed by two-thirds
+              of each chamber, it stands even over a veto.{{ cite: constitution_article_1_section_7 }} The same
+              power over laws and money lets Congress tie sanctions and aid to keeping the peace.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         What "veto-proof" takes
+         ==================================================================== -->
+    <section class="section veto-math" id="veto-proof" aria-labelledby="veto-proof-heading">
+      <div class="page-column">
+        <h2 id="veto-proof-heading">What “veto-proof” takes</h2>
+        <p class="section-intro">
+          The Constitution lets two-thirds of each chamber pass a bill over the president’s
+          veto.{{ cite: constitution_article_1_section_7 }} With every member voting, that is:
+        </p>
+        <div class="seat-targets">
+          <p class="seat-target">
+            <span class="seat-target-number">{{ house_seats_for_veto_proof_majority }}</span>
+            <span class="seat-target-label">of the {{ house_seats }} seats in the House</span>
+          </p>
+          <p class="seat-target">
+            <span class="seat-target-number">{{ senate_seats_for_veto_proof_majority }}</span>
+            <span class="seat-target-label">of the {{ senate_seats }} seats in the Senate</span>
+          </p>
+        </div>
+        <p>
+          Why two-thirds matters: it has happened before. In 2020 Congress voted to end U.S. hostilities
+          against Iran that it had never authorized. The President vetoed it, and the Senate’s vote to
+          override, {{ iran_2020_override_vote }}, fell short of two-thirds.{{ cite: senate_iran_veto_override_2020 }}
+        </p>
+        <p>
+          All {{ house_seats }} House seats and {{ senate_race_count }} Senate seats are on the ballot this
+          year.{{ cite: senate_class_2, ballotpedia_senate_2026 }}
+        </p>
+        <details class="senate-races">
+          <summary>Is there a Senate race in my state?</summary>
+          {{ senate_race_list }}
+        </details>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Ask 2's tool: a ready-made message to send
+         ==================================================================== -->
+    <section class="section" id="pass-it-on" aria-labelledby="pass-it-on-heading">
+      <div class="page-column">
+        <h2 id="pass-it-on-heading">Pass it on</h2>
+        <p class="section-intro">
+          Send this to one person who will send it to others. Change the words so they sound like you.
+        </p>
+        <div class="card share-box" data-share-box data-email-subject="Will you help elect a veto-proof Congress?">
+          <label for="share-message">Your message</label>
+          <textarea id="share-message" rows="7">I'm voting by {{ election_day_short }} for a veto-proof Democratic Congress. Facts found. Prices down. Peace sound.
+
+Will you make sure you're registered, vote, and pass this on to one person who will pass it on too?</textarea>
+          <div class="button-row">
+            <button class="button" type="button" data-share="device" hidden>Share</button>
+            <button class="button" type="button" data-share="text" hidden>Text it</button>
+            <button class="button button-outline" type="button" data-share="email" hidden>Email it</button>
+            <button class="button button-outline" type="button" data-share="copy" hidden>Copy it</button>
+            <span class="button-status" data-share-status aria-live="polite"></span>
+          </div>
+          <noscript>
+            <p class="fine-print">Copy the message, add this page’s address, and paste both into a text or email.</p>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Ask 3's tool: a plan to vote
+         ==================================================================== -->
+    <section class="section" id="voting-plan" aria-labelledby="voting-plan-heading">
+      <div class="page-column">
+        <h2 id="voting-plan-heading">Make your plan to vote</h2>
+        <p class="section-intro">
+          Every state runs its own elections, so each step below links to your own state’s rules.
+        </p>
+        <div class="card">
+          <fieldset class="plan-picker" data-plan-picker>
+            <legend>How will you vote?</legend>
+            <div class="plan-options">
+              <label class="plan-option"><input type="radio" name="voting-method" value="early"> Early, in person</label>
+              <label class="plan-option"><input type="radio" name="voting-method" value="mail"> By mail</label>
+              <label class="plan-option"><input type="radio" name="voting-method" value="election-day"> In person on {{ election_day_short }}</label>
+            </div>
+          </fieldset>
+
+          <!-- With the script on, only the chosen way's steps show; without it, all three do. -->
+          <div class="plan-steps" data-plan-steps="early">
+            <h3>Voting early, in person</h3>
+            <ol>
+              <li>Look up your state’s early-voting dates, places and hours at <a href="https://www.nass.org/can-i-vote/absentee-early-voting">Can I Vote</a>.</li>
+              <li>Check which <a href="https://www.nass.org/can-i-vote/valid-forms-id">ID to bring</a>.</li>
+              <li>Pick a day and a time, and put it in your calendar.</li>
+            </ol>
+          </div>
+          <div class="plan-steps" data-plan-steps="mail">
+            <h3>Voting by mail</h3>
+            <ol>
+              <li>Find out how to get a mail ballot in your state, and by when, at <a href="https://www.nass.org/can-i-vote/absentee-early-voting">Can I Vote</a>. If your state needs a request, send it now.</li>
+              <li>Follow the ballot’s instructions to the letter, and sign wherever it asks.</li>
+              <li>Send it back early, in a way your state accepts, so it arrives in time.</li>
+            </ol>
+          </div>
+          <div class="plan-steps" data-plan-steps="election-day">
+            <h3>Voting on {{ election_day_short }}</h3>
+            <ol>
+              <li>Find your polling place at <a href="https://www.nass.org/can-i-vote/find-your-polling-place">Can I Vote</a> or <a href="https://www.vote411.org/">VOTE411</a>. It may have moved since you last voted.</li>
+              <li>Check your state’s poll hours and which <a href="https://www.nass.org/can-i-vote/valid-forms-id">ID to bring</a>.</li>
+              <li>Plan when you’ll go, and who you’ll bring with you.</li>
+            </ol>
+          </div>
+
+          <div class="button-row" data-calendar
+               data-election-day="{{ election_day_iso }}"
+               data-event-title="Vote for a veto-proof Congress"
+               data-event-details="Election Day. Polling places and hours differ by state: find yours at https://www.nass.org/can-i-vote/find-your-polling-place">
+            <a class="button button-outline" data-calendar-google target="_blank" rel="noopener noreferrer" hidden>Add to Google Calendar</a>
+            <button class="button button-outline" type="button" data-calendar-file hidden>Add to Apple or Outlook calendar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Sources
+         ==================================================================== -->
+    <section class="section" id="sources" aria-labelledby="sources-heading">
+      <div class="page-column">
+        <h2 id="sources-heading">Sources</h2>
+        <p class="section-intro">Checked {{ facts_checked_on_long }}. Each bracketed number above links to its source here.</p>
+        {{ source_list }}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-column">
+      <p>Not affiliated with or authorized by any party, candidate or campaign.</p>
+      <p>This page sets no cookies, has no trackers, and loads nothing from other sites.</p>
+    </div>
+  </footer>
+
+  <script>
+{{ script }}
+  </script>
+</body>
+</html>

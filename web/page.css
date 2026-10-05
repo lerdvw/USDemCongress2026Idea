@@ -1,0 +1,878 @@
+/* ==========================================================================
+   Page styles
+
+   Mobile first: the plain rules are for phones, and the media queries at the
+   end widen the layout for tablets and desktops. Colours are named tokens on
+   :root so the dark theme only has to redefine the tokens.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Colour and type tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --color-page-background: #f6f4ef;
+  --color-card-background: #ffffff;
+  --color-card-border: #dcd7cc;
+  --color-quiet-background: #ece8de;
+
+  /* Text */
+  --color-text: #151a24;
+  --color-text-muted: #4b5466;
+
+  /* The flag colours, used for emphasis and actions */
+  --color-navy: #0d1f3c;
+  --color-blue: #1f4fd1;
+  --color-blue-hover: #173ea8;
+  --color-red: #c8102e;
+
+  /* Text and lines that sit on the navy hero and banners */
+  --color-on-navy: #ffffff;
+  --color-on-navy-muted: #c9d3e6;
+  --color-on-navy-line: rgba(255, 255, 255, 0.28);
+
+  /* Keyboard focus, chosen to show on both light cards and the navy hero */
+  --color-focus-ring: #ffbf47;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-slogan: "Avenir Next Condensed", "Arial Narrow", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 14px;
+  --radius-button: 999px;
+  --shadow-card: 0 1px 2px rgba(13, 31, 60, 0.06), 0 6px 18px rgba(13, 31, 60, 0.06);
+
+  /* 16px side gutter on phones; the wide-screen query raises it */
+  --page-gutter: 16px;
+  --page-max-width: 68rem;
+}
+
+/* The dark theme follows the reader's system setting. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-page-background: #0b1220;
+    --color-card-background: #131c2e;
+    --color-card-border: #26324a;
+    --color-quiet-background: #18233a;
+
+    --color-text: #eef1f7;
+    --color-text-muted: #aab4c8;
+
+    --color-navy: #07142a;
+    --color-blue: #7da0ff;
+    --color-blue-hover: #a5bdff;
+    --color-red: #ff6b7d;
+
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Base elements
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-page-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--color-blue);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--color-blue-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Smooth jumps to in-page sections, unless the reader asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Buttons set their own display, which would otherwise beat the hidden
+   attribute the script uses to show them only when they can work. */
+[hidden] {
+  display: none !important;
+}
+
+/* The first Tab press reveals a link that jumps past the hero. */
+.skip-link {
+  position: absolute;
+  left: var(--page-gutter);
+  top: -4rem;
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-button);
+  background: var(--color-focus-ring);
+  color: #151a24;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* Every full-width band centres its content in this column. */
+.page-column {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+
+/* --------------------------------------------------------------------------
+   Election Day banner: the date and a live countdown, pinned to the top
+   -------------------------------------------------------------------------- */
+
+.election-banner {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--color-red);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .election-banner {
+    background: #b0102a;
+  }
+}
+
+.election-banner p {
+  margin: 0;
+  padding: 0.45rem 0;
+}
+
+.election-banner [data-countdown]:not(:empty)::before {
+  content: " · ";
+}
+
+
+/* --------------------------------------------------------------------------
+   Hero: the ask and its three promises
+   -------------------------------------------------------------------------- */
+
+.hero {
+  /* A field of faint stars over the navy, drawn with two dot grids. */
+  background-color: var(--color-navy);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.10) 1.2px, transparent 1.6px),
+    radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 1.6px);
+  background-size: 28px 28px, 28px 28px;
+  background-position: 0 0, 14px 14px;
+  color: var(--color-on-navy);
+  padding: 2.75rem 0 3rem;
+}
+
+.hero-kicker {
+  margin: 0 0 0.75rem;
+  color: var(--color-on-navy-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 9vw, 4.25rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+/* "Veto-proof" carries the whole argument, so it gets an underline in red. */
+.hero h1 em {
+  font-style: normal;
+  text-decoration: underline;
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.12em;
+}
+
+/* The three promises, one per line. Each line's rhyming word is picked out in red. */
+.slogans {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  font-family: var(--font-slogan);
+  font-size: clamp(2rem, 8.5vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.slogans li + li {
+  margin-top: 0.15em;
+}
+
+.slogans a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.slogans a:hover {
+  color: var(--color-on-navy-muted);
+}
+
+.rhyme {
+  color: #ff4d5e;
+}
+
+.hero-lede {
+  max-width: 38rem;
+  color: var(--color-on-navy-muted);
+  font-size: 1.15rem;
+}
+
+.hero-lede strong {
+  color: var(--color-on-navy);
+}
+
+/* The seat targets beside the slogans show only on wide screens; phones
+   meet them further down, in "What veto-proof takes". */
+.hero-targets {
+  display: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px; /* comfortably tappable */
+  padding: 0.7rem 1.35rem;
+  border: 2px solid var(--color-blue);
+  border-radius: var(--radius-button);
+  background: var(--color-blue);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--color-blue-hover);
+  background: var(--color-blue-hover);
+  color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .button,
+  .button:hover {
+    color: #0b1220;
+  }
+}
+
+/* A quieter button: outlined, for second choices. */
+.button-outline {
+  background: transparent;
+  color: var(--color-blue);
+}
+
+.button-outline:hover {
+  background: var(--color-quiet-background);
+  color: var(--color-blue-hover);
+}
+
+@media (prefers-color-scheme: dark) {
+  .button-outline,
+  .button-outline:hover {
+    color: var(--color-blue);
+  }
+}
+
+/* On the navy hero the main button turns white and the quiet one outlined white. */
+.hero .button {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--color-navy);
+}
+
+.hero .button:hover {
+  background: var(--color-on-navy-muted);
+  border-color: var(--color-on-navy-muted);
+}
+
+.hero .button-outline {
+  background: transparent;
+  color: #ffffff;
+}
+
+.hero .button-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* A short confirmation shown after copying ("Copied!"). */
+.button-status {
+  align-self: center;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+.section {
+  padding: 3rem 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--color-card-border);
+}
+
+.section-intro {
+  max-width: 42rem;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.card {
+  background: var(--color-card-background);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.35rem 1.25rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   The three asks
+   -------------------------------------------------------------------------- */
+
+.ask-list {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.ask-card {
+  position: relative;
+  padding-top: 1.35rem;
+}
+
+/* The big step number in a circle */
+.ask-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-red);
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.ask-card p:last-of-type {
+  margin-bottom: 0;
+}
+
+.fine-print {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Filled by the script: how close the earliest registration deadline is */
+.registration-countdown {
+  font-weight: 700;
+  color: var(--color-red);
+}
+
+
+/* --------------------------------------------------------------------------
+   Share box (ask 2)
+   -------------------------------------------------------------------------- */
+
+.share-box {
+  margin-top: 1rem;
+}
+
+.share-box label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.share-box textarea {
+  width: 100%;
+  min-height: 11rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-card-border);
+  border-radius: 10px;
+  background: var(--color-page-background);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 1rem; /* 16px or more stops iOS zooming in on focus */
+  line-height: 1.5;
+  resize: vertical;
+}
+
+
+/* --------------------------------------------------------------------------
+   Voting plan (ask 3)
+   -------------------------------------------------------------------------- */
+
+.plan-picker {
+  margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.plan-picker legend {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-weight: 700;
+}
+
+.plan-options {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* Each choice is a big tappable row with its radio button inside. */
+.plan-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 48px;
+  padding: 0.6rem 0.9rem;
+  border: 2px solid var(--color-card-border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.plan-option:has(input:checked) {
+  border-color: var(--color-blue);
+  background: var(--color-quiet-background);
+}
+
+.plan-option input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  accent-color: var(--color-blue);
+}
+
+.plan-steps {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid var(--color-blue);
+  border-radius: 0 10px 10px 0;
+  background: var(--color-quiet-background);
+}
+
+.plan-steps h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.plan-steps ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   The three promises, one card each
+   -------------------------------------------------------------------------- */
+
+.result-list {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+.result-card {
+  border-top: 6px solid var(--color-red);
+  scroll-margin-top: 3rem; /* clear the pinned banner when jumped to */
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+/* The red icon beside each slogan: a magnifier, a falling arrow, a peace sign */
+.result-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 12px;
+  background: var(--color-navy);
+  color: #ff4d5e;
+}
+
+.result-icon svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.result-slogan {
+  margin: 0;
+  font-family: var(--font-slogan);
+  font-size: clamp(1.6rem, 6vw, 2.1rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.result-promise {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.result-points {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.result-points li + li {
+  margin-top: 0.6rem;
+}
+
+/* Sub-points inside a point, such as the gifts under the bribery point */
+.result-subpoints {
+  margin: 0.5rem 0 0.6rem;
+  padding-left: 1.1rem;
+}
+
+.result-points .result-subpoints li + li {
+  margin-top: 0.4rem;
+}
+
+/* "How Congress delivers it": the power that makes the promise real */
+.result-lever {
+  margin: 0 0 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  background: var(--color-quiet-background);
+  font-size: 0.98rem;
+}
+
+.result-lever strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--color-red);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Citation markers: small, but big enough to tap */
+.cite {
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 0;
+  white-space: nowrap;
+}
+
+.cite a {
+  padding: 0 0.1em;
+  text-decoration: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   What "veto-proof" means: the two seat targets
+   -------------------------------------------------------------------------- */
+
+.veto-math {
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+}
+
+.veto-math .section-intro {
+  color: var(--color-on-navy-muted);
+}
+
+.veto-math a {
+  color: #ffffff;
+}
+
+.seat-targets {
+  display: grid;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.seat-target {
+  padding: 1.25rem;
+  border: 1px solid var(--color-on-navy-line);
+  border-radius: var(--radius-card);
+}
+
+.seat-target-number {
+  display: block;
+  font-family: var(--font-slogan);
+  font-size: clamp(3rem, 14vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.seat-target-label {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--color-on-navy-muted);
+}
+
+/* The fold-out list of states with a Senate race. Its own arrow replaces
+   the browser's, turning down when the list is open. */
+.senate-races summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.senate-races summary::-webkit-details-marker {
+  display: none;
+}
+
+.senate-races summary::before {
+  content: "";
+  flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 0.75em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.senate-races[open] summary::before {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .senate-races summary::before {
+    transition: transform 0.15s ease;
+  }
+}
+
+.senate-races ul {
+  columns: 2;
+  column-gap: 1.5rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--color-on-navy-muted);
+}
+
+
+/* --------------------------------------------------------------------------
+   Sources and footer
+   -------------------------------------------------------------------------- */
+
+.source-list {
+  margin: 1.25rem 0 0;
+  padding-left: 1.6rem;
+  font-size: 0.92rem;
+}
+
+.source-list li + li {
+  margin-top: 0.45rem;
+}
+
+/* Briefly highlight a source after its citation number is tapped. */
+.source-list li:target {
+  background: var(--color-quiet-background);
+  outline: 2px solid var(--color-blue);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.site-footer {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--color-card-border);
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.site-footer p {
+  margin-bottom: 0.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Wider screens
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 40rem) {
+  :root {
+    --page-gutter: 24px;
+  }
+
+  .seat-targets {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .senate-races ul {
+    columns: 3;
+  }
+}
+
+@media (min-width: 60rem) {
+  .hero {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .ask-list {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 19rem;
+    column-gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-targets {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .hero-targets-heading {
+    margin: 0;
+    color: var(--color-on-navy-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-targets .seat-target {
+    margin: 0;
+  }
+
+  .hero-targets .seat-target-number {
+    font-size: 3.5rem;
+  }
+
+  .hero-targets-link {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* Each promise card becomes two columns: the slogan, promise and lever
+     on the left, the evidence on the right, so lines stay a readable length. */
+  .result-card {
+    display: grid;
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "header points"
+      "promise points"
+      "lever points";
+    column-gap: 2.5rem;
+  }
+
+  .result-header {
+    grid-area: header;
+  }
+
+  .result-promise {
+    grid-area: promise;
+  }
+
+  .result-points {
+    grid-area: points;
+    margin-bottom: 0;
+  }
+
+  .result-lever {
+    grid-area: lever;
+    align-self: start;
+    margin-bottom: 0;
+  }
+
+  .senate-races ul {
+    columns: 5;
+  }
+}

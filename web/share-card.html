@@ -1,0 +1,83 @@
+<!doctype html>
+<!--
+  The picture behind the link previews that texts and social posts show:
+  web/share-card.png, 1200 by 630, a still of the hero. After changing this
+  file, remake the PNG from the repo root with:
+
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+      --hide-scrollbars --window-size=1200,630 --force-device-scale-factor=1 \
+      --user-data-dir=/tmp/share-card-chrome --screenshot=web/share-card.png \
+      "file://$PWD/web/share-card.html"
+
+  Chrome may keep running after it writes the file; stop it by that
+  --user-data-dir. check.py makes sure the PNG exists, has those dimensions,
+  and that this file names Election Day the way facts.py does.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share card</title>
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    box-sizing: border-box;
+    padding: 60px 72px 56px;
+    background-color: #0d1f3c;
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.10) 1.6px, transparent 2.1px),
+      radial-gradient(rgba(255, 255, 255, 0.06) 1.6px, transparent 2.1px);
+    background-size: 36px 36px, 36px 36px;
+    background-position: 0 0, 18px 18px;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .kicker {
+    margin: 0;
+    color: #c9d3e6;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .slogans {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Avenir Next Condensed", "Arial Narrow", system-ui, sans-serif;
+    font-size: 122px;
+    font-weight: 800;
+    line-height: 1.02;
+    text-transform: uppercase;
+  }
+  .rhyme { color: #ff4d5e; }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0;
+    font-size: 31px;
+    font-weight: 700;
+  }
+  .footer em {
+    font-style: normal;
+    text-decoration: underline;
+    text-decoration-color: #ff4d5e;
+    text-decoration-thickness: 0.12em;
+    text-underline-offset: 0.12em;
+  }
+  .footer .date { color: #c9d3e6; font-weight: 600; }
+</style>
+</head>
+<body>
+  <p class="kicker">The 2026 midterms</p>
+  <ul class="slogans" aria-label="What it delivers">
+    <li>Facts <span class="rhyme">Found</span>.</li>
+    <li>Prices <span class="rhyme">Down</span>.</li>
+    <li>Peace <span class="rhyme">Sound</span>.</li>
+  </ul>
+  <p class="footer"><span>Elect a <em>veto-proof</em> Democratic Congress.</span><span class="date">Tuesday, November 3</span></p>
+</body>
+</html>
