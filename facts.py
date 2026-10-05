@@ -217,7 +217,7 @@ SOURCES = {
 # one, and names a 1200 by 630 picture there for the link previews that
 # texts and social posts show: web/share-card.png, drawn from
 # web/share-card.html, which build.py copies next to the page.
-PAGE_ADDRESS = "https://lerdvw.github.io/USDemCongress2026/"
+PAGE_ADDRESS = "https://lerdvw.github.io/USDemCongress2026Idea/"
 SHARE_IMAGE_FILE_NAME = "share-card.png"
 SHARE_IMAGE_WIDTH = 1200
 SHARE_IMAGE_HEIGHT = 630
