@@ -52,7 +52,6 @@
         </p>
         <div class="button-row">
           <a class="button" href="https://vote.gov/">Register or check your registration</a>
-          <a class="button button-outline" href="#pass-it-on">Pass it on</a>
         </div>
       </div>
       <!-- On wide screens only, beside the slogans: what veto-proof means. -->
@@ -66,7 +65,6 @@
           <span class="seat-target-number">{{ senate_seats_for_veto_proof_majority }}</span>
           <span class="seat-target-label">of the {{ senate_seats }} Senate seats</span>
         </p>
-        <a class="hero-targets-link" href="#veto-proof">Why two-thirds matters</a>
       </aside>
     </div>
   </header>
@@ -108,9 +106,6 @@
               Convince one person to convince others: to get registered, and to vote for a veto-proof
               Democratic Congress. You know people this page has not reached yet.
             </p>
-            <div class="button-row">
-              <a class="button" href="#pass-it-on">Get a message to send</a>
-            </div>
           </li>
 
           <li class="card ask-card">
@@ -121,9 +116,6 @@
               {{ election_day_long }}, for the Democrats running for the Senate, if your state has a race, and
               for the House, where every seat is in contention.{{ cite: voting_plan_study }}
             </p>
-            <div class="button-row">
-              <a class="button" href="#voting-plan">Make my plan</a>
-            </div>
           </li>
         </ol>
       </div>
@@ -337,126 +329,6 @@
             </p>
           </article>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         What "veto-proof" takes
-         ==================================================================== -->
-    <section class="section veto-math" id="veto-proof" aria-labelledby="veto-proof-heading">
-      <div class="page-column">
-        <h2 id="veto-proof-heading">What “veto-proof” takes</h2>
-        <p class="section-intro">
-          The Constitution lets two-thirds of each chamber pass a bill over the president’s
-          veto.{{ cite: constitution_article_1_section_7 }} With every member voting, that is:
-        </p>
-        <div class="seat-targets">
-          <p class="seat-target">
-            <span class="seat-target-number">{{ house_seats_for_veto_proof_majority }}</span>
-            <span class="seat-target-label">of the {{ house_seats }} seats in the House</span>
-          </p>
-          <p class="seat-target">
-            <span class="seat-target-number">{{ senate_seats_for_veto_proof_majority }}</span>
-            <span class="seat-target-label">of the {{ senate_seats }} seats in the Senate</span>
-          </p>
-        </div>
-        <p>
-          Why two-thirds matters: it has happened before. In 2020 Congress voted to end U.S. hostilities
-          against Iran that it had never authorized. The President vetoed it, and the Senate’s vote to
-          override, {{ iran_2020_override_vote }}, fell short of two-thirds.{{ cite: senate_iran_veto_override_2020 }}
-        </p>
-        <p>
-          All {{ house_seats }} House seats and {{ senate_race_count }} Senate seats are on the ballot this
-          year.{{ cite: senate_class_2, ballotpedia_senate_2026 }}
-        </p>
-        <details class="senate-races">
-          <summary>Is there a Senate race in my state?</summary>
-          {{ senate_race_list }}
-        </details>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         Ask 2's tool: a ready-made message to send
-         ==================================================================== -->
-    <section class="section" id="pass-it-on" aria-labelledby="pass-it-on-heading">
-      <div class="page-column">
-        <h2 id="pass-it-on-heading">Pass it on</h2>
-        <p class="section-intro">
-          Send this to one person who will send it to others. Change the words so they sound like you.
-        </p>
-        <div class="card share-box" data-share-box data-email-subject="Will you help elect a veto-proof Congress?">
-          <label for="share-message">Your message</label>
-          <textarea id="share-message" rows="7">I'm voting by {{ election_day_short }} for a veto-proof Democratic Congress. Facts found. Prices down. Peace sound.
-
-Will you make sure you're registered, vote, and pass this on to one person who will pass it on too?</textarea>
-          <div class="button-row">
-            <button class="button" type="button" data-share="device" hidden>Share</button>
-            <button class="button" type="button" data-share="text" hidden>Text it</button>
-            <button class="button button-outline" type="button" data-share="email" hidden>Email it</button>
-            <button class="button button-outline" type="button" data-share="copy" hidden>Copy it</button>
-            <span class="button-status" data-share-status aria-live="polite"></span>
-          </div>
-          <noscript>
-            <p class="fine-print">Copy the message, add this page’s address, and paste both into a text or email.</p>
-          </noscript>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         Ask 3's tool: a plan to vote
-         ==================================================================== -->
-    <section class="section" id="voting-plan" aria-labelledby="voting-plan-heading">
-      <div class="page-column">
-        <h2 id="voting-plan-heading">Make your plan to vote</h2>
-        <p class="section-intro">
-          Every state runs its own elections, so each step below links to your own state’s rules.
-        </p>
-        <div class="card">
-          <fieldset class="plan-picker" data-plan-picker>
-            <legend>How will you vote?</legend>
-            <div class="plan-options">
-              <label class="plan-option"><input type="radio" name="voting-method" value="early"> Early, in person</label>
-              <label class="plan-option"><input type="radio" name="voting-method" value="mail"> By mail</label>
-              <label class="plan-option"><input type="radio" name="voting-method" value="election-day"> In person on {{ election_day_short }}</label>
-            </div>
-          </fieldset>
-
-          <!-- With the script on, only the chosen way's steps show; without it, all three do. -->
-          <div class="plan-steps" data-plan-steps="early">
-            <h3>Voting early, in person</h3>
-            <ol>
-              <li>Look up your state’s early-voting dates, places and hours at <a href="https://www.nass.org/can-i-vote/absentee-early-voting">Can I Vote</a>.</li>
-              <li>Check which <a href="https://www.nass.org/can-i-vote/valid-forms-id">ID to bring</a>.</li>
-              <li>Pick a day and a time, and put it in your calendar.</li>
-            </ol>
-          </div>
-          <div class="plan-steps" data-plan-steps="mail">
-            <h3>Voting by mail</h3>
-            <ol>
-              <li>Find out how to get a mail ballot in your state, and by when, at <a href="https://www.nass.org/can-i-vote/absentee-early-voting">Can I Vote</a>. If your state needs a request, send it now.</li>
-              <li>Follow the ballot’s instructions to the letter, and sign wherever it asks.</li>
-              <li>Send it back early, in a way your state accepts, so it arrives in time.</li>
-            </ol>
-          </div>
-          <div class="plan-steps" data-plan-steps="election-day">
-            <h3>Voting on {{ election_day_short }}</h3>
-            <ol>
-              <li>Find your polling place at <a href="https://www.nass.org/can-i-vote/find-your-polling-place">Can I Vote</a> or <a href="https://www.vote411.org/">VOTE411</a>. It may have moved since you last voted.</li>
-              <li>Check your state’s poll hours and which <a href="https://www.nass.org/can-i-vote/valid-forms-id">ID to bring</a>.</li>
-              <li>Plan when you’ll go, and who you’ll bring with you.</li>
-            </ol>
-          </div>
-
-          <div class="button-row" data-calendar
-               data-election-day="{{ election_day_iso }}"
-               data-event-title="Vote for a veto-proof Congress"
-               data-event-details="Election Day. Polling places and hours differ by state: find yours at https://www.nass.org/can-i-vote/find-your-polling-place">
-            <a class="button button-outline" data-calendar-google target="_blank" rel="noopener noreferrer" hidden>Add to Google Calendar</a>
-            <button class="button button-outline" type="button" data-calendar-file hidden>Add to Apple or Outlook calendar</button>
-          </div>
         </div>
       </div>
     </section>

@@ -38,19 +38,6 @@ SOURCES = {
         "The Constitution of the United States: A Transcription (Article I, Section 7: the veto and its override)",
         "National Archives", None,
         "https://www.archives.gov/founding-docs/constitution-transcript"),
-    "senate_iran_veto_override_2020": Source(
-        "Roll Call Vote 84, 116th Congress: overriding the veto of S.J.Res. 68 (U.S. forces in hostilities "
-        "against Iran)",
-        "U.S. Senate", date(2020, 5, 7),
-        "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1162/vote_116_2_00084.htm"),
-    "senate_class_2": Source(
-        "Class II Senators (the seats up in 2026)",
-        "U.S. Senate", None,
-        "https://www.senate.gov/senators/Class_II.htm"),
-    "ballotpedia_senate_2026": Source(
-        "United States Senate elections, 2026 (including the Florida and Ohio special elections)",
-        "Ballotpedia", None,
-        "https://ballotpedia.org/United_States_Senate_elections,_2026"),
 
     # -- Registering and voting --------------------------------------------
     "national_voter_registration_act": Source(
@@ -597,8 +584,6 @@ PAGE_FIGURES = {
     "senate_seats": str(SENATE_SEATS),
     "house_seats_for_veto_proof_majority": str(HOUSE_SEATS_FOR_VETO_PROOF_MAJORITY),
     "senate_seats_for_veto_proof_majority": str(SENATE_SEATS_FOR_VETO_PROOF_MAJORITY),
-    "senate_race_count": str(SENATE_RACE_COUNT),
-    "iran_2020_override_vote": vote_tally(IRAN_2020_OVERRIDE_VOTE_YEAS, IRAN_2020_OVERRIDE_VOTE_NAYS),
 
     # Facts Found
     "epstein_act_house_vote": vote_tally(EPSTEIN_ACT_HOUSE_YEAS, EPSTEIN_ACT_HOUSE_NAYS),
@@ -664,7 +649,6 @@ PAGE_FIGURES = {
 DERIVED_FIGURE_NAMES = (
     "house_seats_for_veto_proof_majority",
     "senate_seats_for_veto_proof_majority",
-    "senate_race_count",
     "months_since_four_to_five_weeks_remark",
     "days_from_swiss_gifts_to_tariff_deal",
     "milton_donations_total",

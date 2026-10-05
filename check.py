@@ -165,8 +165,6 @@ def derived_figures():
     recomputed = {
         "house_seats_for_veto_proof_majority": str(ceiling_of_two_thirds(facts.HOUSE_SEATS)),
         "senate_seats_for_veto_proof_majority": str(ceiling_of_two_thirds(facts.SENATE_SEATS)),
-        "senate_race_count": str(facts.SENATE_CLASS_UP_IN_2026_SEATS
-                                 + [kind for state, kind, party in facts.SENATE_RACES_2026].count("special")),
         "months_since_four_to_five_weeks_remark": NUMBER_NAMES[months_by_counting(facts.FOUR_TO_FIVE_WEEKS_REMARK_DAY,
                                                                                   facts.FACTS_CHECKED_ON)],
         "days_from_swiss_gifts_to_tariff_deal": NUMBER_NAMES[
